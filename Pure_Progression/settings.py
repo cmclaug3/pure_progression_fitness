@@ -33,10 +33,22 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.github',
+    #'allauth.socialaccount.providers.soundcloud',
+    #'allauth.socialaccount.providers.twitter',
+    #'allauth.socialaccount.providers.instagram',
+
     'Fitness',
 ]
 
@@ -100,6 +112,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#ADDED THIS MANUALLY
+AUTHENTICATION_BACKENDS = (
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -119,3 +141,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SITE_ID = 1
+
