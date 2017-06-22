@@ -47,6 +47,7 @@ class Exercise(models.Model):
 			return '{} {}'.format(self.title, self.variation)
 		return self.title
 
+
 class Workout(models.Model):
 	date = models.DateField(default=timezone.now)
 	user = models.ForeignKey(User)
