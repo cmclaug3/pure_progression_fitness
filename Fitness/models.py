@@ -62,7 +62,7 @@ class WorkoutSet(models.Model):
 	workout = models.ForeignKey(Workout)
 	exercise = models.ForeignKey(Exercise)
 	reps = models.IntegerField()
-	rep_style = models.CharField(max_length=10, choices=REP_STYLE_CHOICES)
+	rep_style = models.CharField(max_length=15, choices=REP_STYLE_CHOICES)
 	notes = models.TextField(null=True, blank=True)
 	intensity = models.IntegerField()
 	load = models.IntegerField(help_text='Weight in pounds')

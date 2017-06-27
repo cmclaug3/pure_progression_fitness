@@ -19,15 +19,19 @@
   {% endif %}
 
   <div>
+
     <strong>Menu:</strong>
     <ul>
       {% if user.is_authenticated %}
         <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
         <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-        <li><a href="/new_set/">New Set</a></li>
+        <li><a href="{% url 'workout_form' %}">New Workout</a></li>
+        <li><a href="{% url 'workout_set_submit' %}">New Set</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
       {% else %}
         <li><a href="{% url 'account_login' %}">Sign In</a></li>
         <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+
       {% endif %}
     </ul>
   </div>
