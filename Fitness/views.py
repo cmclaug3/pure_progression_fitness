@@ -4,8 +4,15 @@ from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
-from Fitness.models import Workout
+from Fitness.models import Exercise, Workout, WorkoutSet
 from Fitness.forms import WorkoutSetForm, WorkoutForm
+
+# stuff for the restAPI
+from django.shortcuts import get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from Fitness.serializers import WorkoutSetSerializer
 
 
 def home(request):
@@ -64,7 +71,22 @@ def workout_form(request):
 	return render(request, 'workout_form.html', context)
 
 
+def workout_review(request):
+	context = {
 
+	}
+	return render(request, 'workout_review.html', context)
+
+
+#Lists all workout sets or creates a new one
+class WorkoutSetList(APIView):
+	def get(self, request):
+		workoutset = WorkoutSet.objects.all()
+		serializer = WorkoutSetSerializer(workoutset, many=True)
+		return Response(serializer.data)
+
+	def post(self):
+		pass
 
 
 

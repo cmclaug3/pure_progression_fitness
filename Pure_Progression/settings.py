@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     #'allauth.socialaccount.providers.instagram',
 
     'Fitness',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
