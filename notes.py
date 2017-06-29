@@ -5,4 +5,9 @@
 
 # THINGS TO DO
 
-# 	add a halfway page to review currently built workout
+# 	add a halfway page to review currently built workout??
+#   add a new Fitness Calculator app
+#   add logic to some model fields.  ex. reps 1-6 = strength/power, etc...
+	#    and to auto calculate power according to reps and load
+#   add a model field that dictates number of sets 
+
