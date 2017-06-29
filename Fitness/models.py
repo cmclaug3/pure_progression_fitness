@@ -67,6 +67,14 @@ class WorkoutSet(models.Model):
 	intensity = models.IntegerField()
 	load = models.IntegerField(help_text='Weight in pounds')
 
+	def __str__(self):
+		return '{}@{}'.format(self.reps, self.load)
+
+	def work(self):
+		return int((self.reps * self.load * .033) + self.load)
+
+
+
 
 
 
