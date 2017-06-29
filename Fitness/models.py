@@ -19,8 +19,10 @@ BODY_PART_CHOICES = (
     ('arms', 'Arms'),
     ('legs', 'Legs'),
     ('chest', 'Chest'),
+    ('shoulders', 'Shoulders'),
     ('back', 'Back'),
     ('core', 'Core'),
+    ('cardio', 'Cardio'),
 )
 
 
@@ -35,6 +37,10 @@ MODALITY_CHOICES = (
     ('band', 'Band'),
 )
 
+# INTENSITY_CHOICES = (
+
+# 	)
+
 
 class Exercise(models.Model):
 	title = models.CharField(max_length=200)
@@ -48,30 +54,41 @@ class Exercise(models.Model):
 		return self.title
 
 
+
 class Workout(models.Model):
-	date = models.DateField(default=timezone.now)
 	user = models.ForeignKey(User)
+	date = models.DateField(default=timezone.now)
+	theme = models.CharField(max_length=30, choices=BODY_PART_CHOICES, null=True, blank=True)
 	notes = models.TextField(null=True, blank=True)
 
 	def __str__(self):
-		return '{} on {}'.format(self.user.username, datetime.strftime(self.date, '%Y-%m-%d'))
+		return '{} on {}'.format(self.user.username, datetime.strftime(self.date, '%m-%d-%Y'))
  
 
 
 class WorkoutSet(models.Model):
 	workout = models.ForeignKey(Workout)
 	exercise = models.ForeignKey(Exercise)
+	sets = models.IntegerField(help_text='number of sets', default=1)
 	reps = models.IntegerField()
-	rep_style = models.CharField(max_length=15, choices=REP_STYLE_CHOICES)
+	load = models.IntegerField(help_text='Weight in pounds')
 	notes = models.TextField(null=True, blank=True)
 	intensity = models.IntegerField()
-	load = models.IntegerField(help_text='Weight in pounds')
-
+	#rep_style = models.CharField(max_length=15, choices=REP_STYLE_CHOICES)
+	
 	def __str__(self):
 		return '{}@{}'.format(self.reps, self.load)
 
 	def work(self):
 		return int((self.reps * self.load * .033) + self.load)
+
+	def rep_style(self):
+		if self.reps > 0 and self.reps <= 5:
+			return 'Strength/Power'
+		if self.reps > 5 and self.reps <= 12:
+			return 'Hypertrophy'
+		if self.reps > 12:
+			return 'Endurance'
 
 
 

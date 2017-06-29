@@ -45,8 +45,8 @@ def workout_set_submit(request):
 	if request.method == 'POST':
 		if form.is_valid():
 			form.save()
-			if request.POST.get('sibmut2', False):
-				return redirect('workout_form')
+			#if request.POST.get('sibmut2', False):
+				#return redirect('workout_form')
 			return redirect('home')
 		else:
 			form = WorkoutSetForm()
@@ -90,7 +90,7 @@ def workout_review(request):
 #Lists all workout sets or creates a new one
 @login_required
 class WorkoutSetList(APIView):
-	
+
 	def get(self, request):
 		workoutset = WorkoutSet.objects.all()
 		serializer = WorkoutSetSerializer(workoutset, many=True)

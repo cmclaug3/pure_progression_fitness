@@ -5,15 +5,15 @@ class WorkoutSetForm(forms.ModelForm):
 	class Meta:
 		model = WorkoutSet
 		fields = [
-			'workout', 'exercise', 'reps',
-			'rep_style', 'notes', 'intensity', 'load'
+			'workout', 'exercise', 'sets', 'reps', 'load',
+			'intensity', 'notes',
 		]
 
 class WorkoutForm(forms.ModelForm):
 	class Meta:
 		model = Workout
 		fields = [
-			'date', 'user', 'notes',
+			'user', 'theme', 'date', 'notes',
 		]
 
 class ExerciseForm(forms.ModelForm):
