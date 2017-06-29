@@ -21,6 +21,7 @@
 #	how to optionally have multiple themes in new workouts
 #	change intensity to float field? or have choices???
 #	should SET link be changed to REPSCHEME or SCHEME in base.html menu???
+#	Make single workout view into a table ***********
 
 
 # FIRST THING TO DO IS GET BUTTONS ON NEW SET FORM TO WORK...
@@ -28,4 +29,8 @@
 #	SUBMIT ADD ANOTHER, REVIEW, COMPLETE
 #
 # and start throwing your own workouts in there!
-# and remember to add updated model fields (and major Prewrite) in next git commit!!!!!!!!!!! (it was important)
+
+
+
+
+

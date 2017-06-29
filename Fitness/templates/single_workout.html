@@ -4,14 +4,28 @@
 
 	<h1>Youre workout on {{workout.date}}</h1>
 
-	<ul>
+	<table>
+	<tr>
+    		<th>Exercise</th>
+    		<th>Sets</th> 
+   			<th>Reps</th>
+   			<th>Load</th>
+   			<th>Work</th>
+   			<th>Rep Style</th>
+   			<th>Notes</th>
+ 	 	</tr>
 		{% for workout_set in workout.workoutset_set.all %}
-	<li>
-		{{workout_set.exercise.title}}: {{workout_set.sets}} x {{workout_set.reps}} @ {{workout_set.load}}lbs, work = {{workout_set.work}}lbs, {{workout_set.rep_style}}
-		{% if workout_set.notes %}
-		<p>{{workout_set.notes}}</p>
-		{% endif %}
-	</li>
+ 	 	<tr>
+		<td>{{workout_set.exercise.title}}</td>
+		<td>{{workout_set.sets}}</td>
+		<td>{{workout_set.reps}}</td>
+		<td>{{workout_set.load}}</td>
+		<td>{{workout_set.work}}</td>
+		<td>{{workout_set.rep_style}}</td>
+		<td>{{workout_set.notes}}</td>
 		{% endfor %}
-	</ul>	
+	</table>
 	{% endblock content %}
+
+
+

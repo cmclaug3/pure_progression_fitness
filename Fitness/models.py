@@ -73,11 +73,11 @@ class WorkoutSet(models.Model):
 	reps = models.IntegerField()
 	load = models.IntegerField(help_text='Weight in pounds')
 	notes = models.TextField(null=True, blank=True)
-	intensity = models.IntegerField()
+	intensity = models.FloatField()
 	#rep_style = models.CharField(max_length=15, choices=REP_STYLE_CHOICES)
 	
 	def __str__(self):
-		return '{}@{}'.format(self.reps, self.load)
+		return '{} x {} @ {}'.format(self.sets, self.reps, self.load)
 
 	def work(self):
 		return int((self.reps * self.load * .033) + self.load)
