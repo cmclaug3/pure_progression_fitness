@@ -61,6 +61,9 @@ class Workout(models.Model):
 	theme = models.CharField(max_length=30, choices=BODY_PART_CHOICES, null=True, blank=True)
 	notes = models.TextField(null=True, blank=True)
 
+	class Meta:
+		ordering = ['-date']
+
 	def __str__(self):
 		return '{} on {}'.format(self.user.username, datetime.strftime(self.date, '%m-%d-%Y'))
  

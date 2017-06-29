@@ -5,6 +5,7 @@
 
 # 	change password and logging in through GitHub
 #	restAPI not working: as_view throwing error
+#	When TestUser logged in they can make workout for any User
 
 # THINGS TO DO
 
@@ -22,6 +23,7 @@
 #	change intensity to float field? or have choices???
 #	should SET link be changed to REPSCHEME or SCHEME in base.html menu???
 #	Make single workout view into a table ***********
+
 
 
 # FIRST THING TO DO IS GET BUTTONS ON NEW SET FORM TO WORK...

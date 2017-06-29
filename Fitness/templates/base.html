@@ -23,11 +23,15 @@
     <strong>Menu:</strong>
     <ul>
       {% if user.is_authenticated %}
+
         <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'workout_form' %}">New Workout</a></li>
-        <li><a href="{% url 'workout_set_submit' %}">New Set</a></li>
         <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
         <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+        <hr>
+        
+        <li><a href="{% url 'workout_form' %}">New Workout</a></li>
+        <li><a href="{% url 'workout_set_submit' %}">New Set</a></li>
+        <hr>
  
       {% else %}
         <li><a href="{% url 'account_login' %}">Sign In</a></li>

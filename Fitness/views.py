@@ -21,7 +21,7 @@ def home(request):
 	if not request.user.is_authenticated:
 		return redirect(reverse('account_login'))
 	context = {
-		'workouts': Workout.objects.filter(user=request.user),
+		'workouts': Workout.objects.filter(user=request.user)
 	}
 	return render(request, 'home.html', context)
 
