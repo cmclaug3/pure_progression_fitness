@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
 from Fitness.models import Exercise, Workout, WorkoutSet
-from Fitness.forms import WorkoutSetForm, WorkoutForm, ExerciseForm
+from Fitness.forms import WorkoutSetForm, WorkoutForm, ExerciseForm, CardioSetForm
 
 # stuff for the restAPI
 from django.shortcuts import get_object_or_404
@@ -87,7 +87,7 @@ def workout_review(request):
 
 
 
-#Lists all workout sets or creates a new one
+#Lists all workout sets or creates a new one/restAPI JSON
 @login_required
 class WorkoutSetList(APIView):
 
@@ -99,6 +99,21 @@ class WorkoutSetList(APIView):
 	def post(self):
 		pass
 
+
+def cardio_set_form(request):
+	form = CardioSetForm(request.POST)
+	if request.method == 'POST':
+		if form.is_valid():
+			form.save()
+
+			return redirect('home')
+		else:
+			form = WorkoutSetForm()
+	context = {
+		'form': form,
+	}
+
+	return render(request, 'cardio_set_form.html', context)
 
 
 

@@ -2,11 +2,12 @@
 
 	{% block content %}
 
-	<h1>Youre workout on {{workout.date}}</h1>
+	<h1>Workout on {{workout.date}}</h1>
 
 	<table>
 	<tr>
     		<th>Exercise</th>
+    		<th>Modality</th>
     		<th>Sets</th> 
    			<th>Reps</th>
    			<th>Load</th>
@@ -17,6 +18,7 @@
 		{% for workout_set in workout.workoutset_set.all %}
  	 	<tr>
 		<td>{{workout_set.exercise.title}}</td>
+		<td>{{workout_set.modality}}</td>
 		<td>{{workout_set.sets}}</td>
 		<td>{{workout_set.reps}}</td>
 		<td>{{workout_set.load}}</td>

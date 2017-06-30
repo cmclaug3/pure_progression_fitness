@@ -37,6 +37,15 @@ MODALITY_CHOICES = (
     ('band', 'Band'),
 )
 
+CARDIO_CHOICES = (
+	('run', 'Run'),
+	('spring', 'Sprint'),
+	('swim', 'Swim'),
+	('ellyptical', 'Ellyptical'),
+	('heavy-bag', 'Heavy Bag'),
+	('row-machine', 'Row Machine'),
+)
+
 # INTENSITY_CHOICES = (
 
 # 	)
@@ -72,7 +81,7 @@ class Workout(models.Model):
 class WorkoutSet(models.Model):
 	workout = models.ForeignKey(Workout)
 	exercise = models.ForeignKey(Exercise)
-	sets = models.IntegerField(help_text='number of sets', default=1)
+	sets = models.IntegerField(help_text='Number of sets', default=1)
 	reps = models.IntegerField()
 	load = models.IntegerField(help_text='Weight in pounds')
 	notes = models.TextField(null=True, blank=True)
@@ -83,7 +92,10 @@ class WorkoutSet(models.Model):
 		return '{} x {} @ {}'.format(self.sets, self.reps, self.load)
 
 	def work(self):
-		return int((self.reps * self.load * .033) + self.load)
+		if self.reps <= 12:
+			return int((self.reps * self.load * .033) + self.load)
+		else:
+			return ''
 
 	def rep_style(self):
 		if self.reps > 0 and self.reps <= 5:
@@ -92,6 +104,17 @@ class WorkoutSet(models.Model):
 			return 'Hypertrophy'
 		if self.reps > 12:
 			return 'Endurance'
+
+
+
+class CardioSet(models.Model):
+	workout = models.ForeignKey(Workout)
+	venue = models.CharField(max_length=25, choices=CARDIO_CHOICES)
+	time_length = models.TimeField()
+	speed = models.FloatField(null=True, blank=True)
+
+	def mile_pace(self):
+		pass
 
 
 

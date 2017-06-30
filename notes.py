@@ -7,6 +7,7 @@
 #	restAPI not working: as_view throwing error
 #	When TestUser logged in they can make workout for any User
 
+
 # THINGS TO DO
 
 #   add a new Fitness Calculator app (make searchable with links at top!)
@@ -23,8 +24,10 @@
 #	change intensity to float field? or have choices???
 #	should SET link be changed to REPSCHEME or SCHEME in base.html menu???
 #	Make single workout view into a table ***********
-
-
+#	WorkoutSet needs to be able to handle sets with diff # of reps
+#	Make a little link next to Intensity in NewSet explaining the scale...
+#	add CardioSet model/form to track runs/cardio sessions
+#		got alot of it done but some is still broken...
 
 # FIRST THING TO DO IS GET BUTTONS ON NEW SET FORM TO WORK...
 # 3 BUTTONS
@@ -33,6 +36,9 @@
 # and start throwing your own workouts in there!
 
 
+# WHAT I NEED TO WORK ON
+
+# views and urls dealing with id/pk
 
 
 

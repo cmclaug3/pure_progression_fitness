@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+	{% block content %}
+
+	<h1>Cardio on {{workout.date}}</h1>
+
+	<table>
+	<tr>
+	{% for workout_set in workout.workoutset_set.all %}
+	{% if workout_set.venue == 'Run' or workout_set.venue == 'Ellyptical' %}
+    		<th>Venue</th>
+    		<th>Time Length</th>
+    		<th>Speed</th> 
+   			<th>Time/mile</th>
+   	{% endif %}
+   	{% endfor %}
+ 	 	</tr>
+
+
+
+		{% for workout_set in workout.workoutset_set.all %}
+		{% if workout_set.venue == 'Run' or workout_set.venue == 'Ellyptical' %}
+ 	 	<tr>
+		<td>{{workout_set.venue}}</td>
+		<td>{{workout_set.time_length}}</td>
+		<td>{{workout_set.speed}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% endblock content %}

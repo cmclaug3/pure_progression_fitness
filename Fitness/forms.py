@@ -1,5 +1,5 @@
 from django import forms
-from Fitness.models import WorkoutSet, Workout, Exercise
+from Fitness.models import WorkoutSet, Workout, Exercise, CardioSet
 
 class WorkoutSetForm(forms.ModelForm):
 	class Meta:
@@ -19,4 +19,9 @@ class WorkoutForm(forms.ModelForm):
 class ExerciseForm(forms.ModelForm):
 	class Meta:
 		model = Exercise
+		fields = '__all__'
+
+class CardioSetForm(forms.ModelForm):
+	class Meta:
+		model = CardioSet
 		fields = '__all__'
